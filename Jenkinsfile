@@ -1,6 +1,5 @@
 #!/usr/bin/env groovy 
-//Jenkinsfile (Declarative Pipeline) Changed in VSCode
-// Comment only as test
+//Jenkinsfile (Declarative Pipeline) 3. Changed in VSCode
 
 pipeline {
     agent { docker 'maven:3.3.3' }
