@@ -1,16 +1,14 @@
 #!/usr/bin/env groovy 
 //Jenkinsfile (Declarative Pipeline) 3. Changed in VSCode
+// node 6.10.1
+// npm 3.10.10
 
 pipeline {
-    agent { docker 'maven:3.3.3' }
+    agent { docker 'node:6.3' }
     stages {
         stage('build') {
             steps {
-                dir('C:\\Users\\renep\\Documents\\Angular\\matrix') {
-                    // some block
-                    fileExists 'C:\\Users\\renep\\Documents\\Angular\\matrix\'\\debug.log'
-                }
-                sh 'mvn --version'
+                sh 'npm --version'
             }
         }
     }
