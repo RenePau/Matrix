@@ -2,13 +2,19 @@
 //Jenkinsfile (Declarative Pipeline) 3. Changed in VSCode
 // node 6.10.1
 // npm 3.10.10
+// agent { docker 'node:6.10.1' }
+// stage('build') {
+//            steps {
+//                cmd 'npm --version'
+//            }
+//        }
 
 pipeline {
-    agent { docker 'node:6.10.1' }
+    agent { label 'master' }
     stages {
-        stage('build') {
+        stage('testing A1') {
             steps {
-                cmd 'npm --version'
+                sh 'echo hello from master node'
             }
         }
     }
