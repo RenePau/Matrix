@@ -6,9 +6,13 @@ node {
         //sh 'echo "hi"'
     }
     stage('Test') {
-        echo 'Building....'
+        echo 'Testing....'
     }
     stage('Deploy') {
         echo 'Deploying....'
+    }
+    stage('TestJenkins'){
+        echo 'TestJenkins....'
+        sh 'echo "test-jenkins"'
     }
 }
