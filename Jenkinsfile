@@ -4,7 +4,8 @@ node {
         echo 'Building....'
         // Create virtualenv
         //sh 'echo "hi"'
-        sh 'ng build'
+        sh 'npm install'
+        //sh 'ng build'
     }
     stage('Test') {
         echo 'Testing....'
