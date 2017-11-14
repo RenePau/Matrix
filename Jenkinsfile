@@ -4,9 +4,11 @@ node {
         echo 'Building....'
         // Create virtualenv
         //sh 'echo "hi"'
+        sh 'ng build'
     }
     stage('Test') {
         echo 'Testing....'
+        //sh 'ng test'
     }
     stage('Deploy') {
         echo 'Deploying....'
