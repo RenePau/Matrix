@@ -1,21 +1,20 @@
 #!/usr/bin/env groovy 
 node {
+    stage('PreBuild') {
+        echo 'PreBuilding....'
+        sh 'npm install'
+    }
     stage('Build') {
         echo 'Building....'
-        // Create virtualenv
-        //sh 'echo "hi"'
-        sh 'npm install'
-        //sh 'ng build'
+        sh 'ng build'
     }
     stage('Test') {
         echo 'Testing....'
-        //sh 'ng test'
+        sh 'ng test'
     }
     stage('Deploy') {
         echo 'Deploying....'
+        //sh deploy
     }
-    stage('TestJenkins'){
-        echo 'TestJenkins....'
-        sh 'echo "test-jenkins"'
-    }
+    
 }
