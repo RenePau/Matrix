@@ -1,22 +1,113 @@
-#!/usr/bin/env groovy 
+#!groovy
+
+
+
+properties(
+
+    [
+
+        [$class: 'BuildDiscarderProperty', strategy:
+
+          [$class: 'LogRotator', artifactDaysToKeepStr: '14', artifactNumToKeepStr: '5', daysToKeepStr: '30', numToKeepStr: '60']],
+
+        pipelineTriggers(
+
+          [
+
+              // pollSCM('H/15 * * * *'),
+
+              // cron('@daily'),
+
+          ]
+
+        )
+
+    ]
+
+)
+
 node {
-    stage('PreBuild') {
-        echo 'PreBuilding....'
-        checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/RenePau/Matrix.git']]])
-        sh 'npm install'
+
+
+
+    stage('Checkout') {
+
+        //disable to recycle workspace data to save time/bandwidth
+
+        deleteDir()
+
+        checkout scm
+
     }
-    stage('Build') {
-        echo 'Building....'
-        sh 'ng '
-        sh 'ng build'
+
+
+
+    docker.image('trion/ng-cli-karma:1.2.1').inside {
+
+      stage('NPM Install') {
+
+          withEnv(["NPM_CONFIG_LOGLEVEL=warn"]) {
+
+              sh 'npm install'
+
+          }
+
+      }
+
+
+
+      stage('Test') {
+
+          withEnv(["CHROME_BIN=/usr/bin/chromium-browser"]) {
+
+            sh 'ng test --progress=false --watch false'
+
+          }
+
+          junit '**/test-results.xml'
+
+      }
+
+
+
+      stage('Lint') {
+
+          sh 'ng lint'
+
+      }
+
+        
+
+      stage('Build') {
+
+          milestone()
+
+          sh 'ng build --prod --aot --sm --progress=false'
+
+      }
+
     }
-    stage('Test') {
-        echo 'Testing....'
-        sh 'ng test'
+
+    //end docker
+
+
+
+    stage('Archive') {
+
+        sh 'tar -cvzf dist.tar.gz --strip-components=1 dist'
+
+        archive 'dist.tar.gz'
+
     }
+
+
+
     stage('Deploy') {
-        echo 'Deploying....'
-        //sh deploy
+
+        milestone()
+
+        echo "Deploying..."
+
     }
-    
+
 }
