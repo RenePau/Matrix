@@ -42,7 +42,7 @@ node {
 
 
 
-    docker.image('trion/ng-cli-karma:1.2.1').inside {
+    //docker.image('trion/ng-cli-karma:1.2.1').inside {
 
       stage('NPM Install') {
 
@@ -86,7 +86,7 @@ node {
 
       }
 
-    }
+    //}
 
     //end docker
 
