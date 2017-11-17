@@ -78,7 +78,8 @@ node {
 
           milestone()
 
-          sh 'ng build --prod --aot --sm --progress=false'
+          //sh 'ng build --prod --aot --sm --progress=false'
+          sh 'ng build --env=prod --output-hashing none' 
 
       }
 
