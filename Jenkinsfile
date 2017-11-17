@@ -58,13 +58,19 @@ node {
 
       stage('Test') {
 
-          withEnv(["CHROME_BIN=/usr/bin/chromium-browser"]) {
+          //withEnv(["CHROME_BIN=/usr/bin/chromium-browser"]) {
 
+            //sh 'ng test --progress=false --watch false'
+
+          //}
+
+        try {
             sh 'ng test --progress=false --watch false'
-
-          }
-
-          junit '**/test-results.xml'
+            junit '**/test-results.xml'
+        } catch(Exception ex) {
+            println "Exception: ${ex.message}"
+            echo 'Exception occured'
+        }
 
       }
 
