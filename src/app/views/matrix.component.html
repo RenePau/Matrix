@@ -2,21 +2,9 @@
 <h6 class="title">Running Thread 'Your Reality'</h6>
 <button>Back to Virtual Reality</button>
 <table class="tablebackground">
-    <thead>
-        <tr>
-            <td></td>
-        </tr>
-    </thead>
     <tbody>
-        
-        <tr>
-            <table class="tablebackground">
-                <tbody>
-                    <tr *ngFor="let rowcells of matrix.RowCells">
-                        <td *ngFor="let cel of rowcells.Cells"> <cell [celldata]='cel'>loading cell...</cell> </td>
-                    </tr>
-                </tbody>
-            </table>
+        <tr *ngFor="let rowcells of matrix.RowCells">
+            <td *ngFor="let cel of rowcells.Cells"> <cell [celldata]='cel'>loading cell...</cell> </td>
         </tr>
     </tbody>
 </table>

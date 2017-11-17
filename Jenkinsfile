@@ -69,20 +69,10 @@ node {
             junit '**/test-results.xml'
         } catch(Exception ex) {
             println "Exception: ${ex.message}"
-            echo 'Exception occured'
         }
 
       }
-
-
-
-      stage('Lint') {
-
-          sh 'ng lint'
-
-      }
-
-        
+  
 
       stage('Build') {
 

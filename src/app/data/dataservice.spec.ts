@@ -24,7 +24,7 @@ describe('DataService Injector', () => {
       it('dataservice getIndex1', () => expect(service.getIndex() ).toBe(1));
       it('dataservice getNewRowCells()', () => expect(service.getNewRowCells().Row ).toBe(2));
       it('dataservice getIndex2', () => expect(service.getIndex() ).toBe(2));
-      it('dataservice getNewRowCellsLength()', () => expect(service.getNewRowCells().Cells.length ).toBe(30));
+      it('dataservice getNewRowCellsLength()', () => expect(service.getNewRowCells().Cells.length ).toBe(97));
       it('dataservice getIndex3', () => expect(service.getIndex() ).toBe(3));
       it('dataservice getNewRowCells().Cells[0].Id', () => expect(service.getNewRowCells().Cells[0].Id ).toBe(4000));
 

@@ -29,6 +29,7 @@ describe('matrix component', () => {
     let el:      HTMLElement;
     let de2:      DebugElement;
     let el2:      HTMLElement;
+    let tbl:    HTMLTableElement;
     let service: DataService;
 
     let dataServiceStub = {
@@ -85,10 +86,11 @@ describe('matrix component', () => {
         comp = fixture.componentInstance; // MatrixComponent test instance
         
         // query for the title <h1> by CSS element selector
-        de = fixture.debugElement.query(By.css('h4'));
+        de = fixture.debugElement.query(By.css('h6'));
         el = de.nativeElement;
-        de2 = fixture.debugElement.query(By.css('h6'));
-        el2 = de2.nativeElement;
+
+        de2 = fixture.debugElement.query(By.css('table'));
+        tbl = de2.nativeElement;
 
         service = TestBed.get(DataService);
 
@@ -96,24 +98,22 @@ describe('matrix component', () => {
 
     it('should display original test', () => {
         fixture.detectChanges();
-        expect(el.textContent).toContain(comp.test);
+        expect(el.textContent).toContain("Running Thread 'Your Reality'");
     });
 
-    it('should display a different test', () => {
-        comp.test = 'Test123';
+    it('should display original Text exact', () => {
         fixture.detectChanges();
-        expect(el.textContent).toContain('Test123');
-      });
-
-    it('should display old test until manually call `detectChanges`', () => {
-        comp.test = 'Test12';
-        expect(el.textContent).toEqual('');
+        expect(el.textContent).toEqual("Running Thread 'Your Reality'");
     });
+
+    it('table row length', () => {
+        fixture.detectChanges();
+        expect(tbl.rows.length).toEqual(30);
+    });
+
+    
       
-    it('should display original test2', () => {
-        fixture.detectChanges();
-        expect(el2.textContent).toContain(comp.test2);
-    });
+    
 
 });
 
