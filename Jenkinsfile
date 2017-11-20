@@ -49,7 +49,7 @@ node {
           withEnv(["NPM_CONFIG_LOGLEVEL=warn"]) {
 
               sh 'npm install'
-
+              sh 'npm install --save @types/jquery@2.0.34'
           }
 
       }
