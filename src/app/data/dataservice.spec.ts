@@ -47,6 +47,14 @@ describe('DataService Injector', () => {
 
   });
 
+  describe('DataService Test Jenkins', () => {
+    let service = new DataService('true');
+    let testresult = service.getTestNumber();
+
+    it('dataservice getTestNumber', () => expect(testresult ).toBe(42));
+
+  });
+
 
 
 

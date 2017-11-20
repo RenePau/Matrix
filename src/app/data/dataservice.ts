@@ -28,9 +28,9 @@ export class DataService {
     constructor( test: string)
     constructor( @Inject(TEST) test?: string) {
         if(test && test=='true'){
-            console.log('dataservice test: '+ test);
+            //console.log('dataservice test: '+ test);
             this._test = true;
-            console.log('dataservice test: '+ this._test);
+            //console.log('dataservice test: '+ this._test);
         }else{
             this._test= false;
         }
@@ -110,6 +110,10 @@ export class DataService {
 
     getIndex():number{
         return this.index;
+    }
+
+    getTestNumber():number{
+        return 42;
     }
     
 }
