@@ -31,8 +31,8 @@ module.exports = function (config) {
     angularCli: {
       environment: 'dev'
     },
-    reporters = ['dots', 'junit'],
-    junitReporter = {
+    reporters: ['dots', 'junit'],
+    junitReporter: {
       outputFile: 'test-results.xml'
     },
     port: 9876,
