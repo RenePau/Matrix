@@ -78,7 +78,7 @@ node {
 
           milestone()
 
-
+        // test reading results
           if(fileExists '**/test-results.xml'){
                println("test-results.xml FOUND")
 
