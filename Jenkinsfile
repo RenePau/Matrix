@@ -79,7 +79,7 @@ node {
           milestone()
 
         // test reading results
-          def exists = fileExists '**/test-results.xml'
+          def exists = fileExists '**/Chrome_62.0.3202_(Windows_10_0.0.0)/test-results.xml'
 
           if(exists){
                println("test-results.xml FOUND")
