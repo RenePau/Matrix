@@ -79,7 +79,9 @@ node {
           milestone()
 
         // test reading results
-          if(fileExists '**/test-results.xml'){
+          def exists = fileExists '**/test-results.xml'
+
+          if(exists){
                println("test-results.xml FOUND")
 
                try{
