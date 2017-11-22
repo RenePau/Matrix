@@ -78,6 +78,26 @@ node {
 
           milestone()
 
+
+          if(fileExists '**/test-results.xml'){
+               println("test-results.xml FOUND")
+
+               try{
+                  def _readfile = readFile '**/test-results.xml'
+                  def test=new XmlSlurper().parse(new File('**/test-results.xml'))
+                  println(test.name())
+                  println test.attributes()
+
+
+ 
+               }catch(Exception ex) {
+                  println "Exception reading file: ${ex.message}"
+               }
+          }
+          else{
+               println("test-results.xml NOT FOUND")
+          }
+
           //sh 'ng build --prod --aot --sm --progress=false'
           sh 'ng build --env=prod --output-hashing none' 
 
