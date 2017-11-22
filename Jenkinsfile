@@ -79,14 +79,15 @@ node {
           milestone()
 
         // test reading results
-          def exists = fileExists '**/Chrome_62.0.3202_(Windows_10_0.0.0)/test-results.xml'
+          def exists = fileExists '${WORKSPACE}/Chrome_62.0.3202_(Windows_10_0.0.0)/test-results.xml'
 
           if(exists){
                println("test-results.xml FOUND")
 
                try{
-                  def _readfile = readFile '**/test-results.xml'
-                  def test=new XmlSlurper().parse(new File('**/test-results.xml'))
+                  //def _readfile = readFile '**/test-results.xml'
+                  //def test=new XmlSlurper().parse(new File('**/test-results.xml'))
+                  def test=new XmlSlurper().parse(new File('${WORKSPACE}/Chrome_62.0.3202_(Windows_10_0.0.0)/test-results.xml'))
                   println(test.name())
                   println test.attributes()
 
