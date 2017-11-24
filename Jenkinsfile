@@ -96,8 +96,9 @@ node {
                   def test = new XmlParser().parse(new File("Chrome_62.0.3202_(Windows_10_0.0.0)/test-results.xml"))
 
                 test.'testsuite:testcase'.each { case ->
-                    println " testcase.name = "+case.@'name'	
-                    println "    failure = " + case.'testcase:failure'.text()
+                    //println " testcase.name = "+case.name	
+                    //println "    failure = " + case.'testcase:failure'.text()
+                    println "testcase"
                 }
 
 
