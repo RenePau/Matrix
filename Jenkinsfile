@@ -93,7 +93,13 @@ node {
                   //  println(test.name())
                   // println test.attributes()
 
-                  def test = new XmlParser().parse(new File("Chrome_62.0.3202_(Windows_10_0.0.0)/test-results.xml"))
+                  // Exception reading file: Scripts not permitted to use new groovy.util.XmlParser
+                  // def test = new XmlParser().parse(new File("Chrome_62.0.3202_(Windows_10_0.0.0)/test-results.xml"))
+
+                  // def result = sh(script: 'curl -m 2 --write-out "%{http_code}" ' + uiNodes[i], returnStdout: true)
+
+                  def test = sh(script: new XmlParser().parse(new File("Chrome_62.0.3202_(Windows_10_0.0.0)/test-results.xml")), returnStdout: true) 
+                  
 
                   test.'testsuite:testcase'.each { testcase ->
                         //println " testcase.name = "+case.name	
