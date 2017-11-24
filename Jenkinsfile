@@ -98,7 +98,7 @@ node {
                 test.'testsuite:testcase'.each { case ->
                     //println " testcase.name = "+case.name	
                     //println "    failure = " + case.'testcase:failure'.text()
-                    println "testcase"
+                    println "testcase as test"
                 }
 
 
