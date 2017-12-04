@@ -51,7 +51,7 @@ describe('DataService Injector', () => {
     let service = new DataService('true');
     let testresult = service.getTestNumber();
 
-    //it('dataservice getTestNumber', () => expect(testresult ).toBe(42)); //Success
-    it('dataservice getTestNumber', () => expect(testresult ).toBe(41)); //Failed
+    it('dataservice getTestNumber', () => expect(testresult ).toBe(42)); //Success
+    //it('dataservice getTestNumber', () => expect(testresult ).toBe(41)); //Failed
 
   });
